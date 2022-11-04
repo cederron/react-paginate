@@ -6,7 +6,7 @@ import PageView from './PageView';
 import BreakView from './BreakView';
 import { classNameIfDefined } from './utils';
 
-export default class PaginationBoxView extends Component {
+class PaginationBoxView extends Component {
   static propTypes = {
     pageCount: PropTypes.number.isRequired,
     pageRangeDisplayed: PropTypes.number,
@@ -561,7 +561,7 @@ export default class PaginationBoxView extends Component {
     const nextAriaDisabled = isNextDisabled ? 'true' : 'false';
 
     return (
-      <ul className={className || containerClassName}>
+      <ul ref={this.props.innerRef} className={className || containerClassName}>
         <li className={previousClasses}>
           <a
             className={previousLinkClasses}
@@ -599,3 +599,5 @@ export default class PaginationBoxView extends Component {
     );
   }
 }
+
+export default React.forwardRef((props, ref) => <PaginationBoxView innerRef={ref} {...props} />);
