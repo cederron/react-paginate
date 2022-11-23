@@ -561,7 +561,10 @@ class PaginationBoxView extends Component {
     const nextAriaDisabled = isNextDisabled ? 'true' : 'false';
 
     return (
-      <ul ref={this.props.innerRef} className={className || containerClassName}>
+      <ul
+      id={this.props.id}
+      ref={this.props.innerRef}
+      className={className || containerClassName}>
         <li className={previousClasses}>
           <a
             className={previousLinkClasses}
